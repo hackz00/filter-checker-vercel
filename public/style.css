@@ -74,6 +74,53 @@ a {
   gap: 10px;
 }
 
+.filter-selection {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 20px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background-color: var(--background3);
+  border: 1px solid var(--highlight);
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+  background-color: var(--highlight);
+}
+
+.checkbox-label input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  color: var(--background);
+  font-size: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 textarea {
   width: 100%;
   max-width: 500px;
@@ -107,10 +154,17 @@ button:hover {
   background-color: var(--button-hover);
 }
 
-#loading {
-  margin-top: 10px;
+.loading-text {
+  margin-top: 15px;
   font-style: italic;
   color: var(--loading-color);
+  font-family: "Geist Mono";
+  min-width: 100px;
+  text-align: center;
+}
+
+#loading {
+  display: none;
 }
 
 #progress-container {
@@ -134,7 +188,7 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 75%;
+  width: 50%;
   max-width: 800px;
   margin: 50px 0px 20px 0px;
   gap: 10px;
@@ -171,10 +225,6 @@ button:hover {
   border-radius: 5px;
   font-size: 1em;
   line-height: 1.5;
-}
-
-#loading {
-  display: none;
 }
 
 #result {

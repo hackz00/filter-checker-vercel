@@ -19,9 +19,22 @@
     <p>Refer to <a href="https://github.com/smartfoloo/filter-checker/blob/main/README.md">the documentation</a>
       for a tutorial!</p>
   </div>
+  <div class="filter-selection">
+    <label>Select filters to check:</label>
+    <div class="checkbox-group">
+      <label class="checkbox-label">
+        <input type="checkbox" id="lightspeedFilter" checked>
+        Lightspeed
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="fortiguardFilter" checked>
+        FortiGuard
+      </label>
+    </div>
+  </div>
   <textarea id="inputText" rows="10" placeholder="Paste your FreeDNS text..."></textarea><br>
   <button onclick="checkLinks()">Check Links</button>
-  <div id="loading">Fetching...</div>
+  <div id="loading" class="loading-text">Fetching.</div>
   <div id="progress-container">
     <div id="progress-bar"></div>
   </div>

@@ -68,7 +68,7 @@ async function fetchCategorization(url) {
   }
 }
 
-async function checkFortiGuard(url) {
+async function fetchFortiGuard(url) {
   try {
     console.log(`Fetching FortiGuard data for: ${url}`)
 
@@ -130,9 +130,16 @@ async function checkFortiGuard(url) {
 }
 
 app.post("/check-links", async (req, res) => {
-  const { urls } = req.body
+  const { urls, filters } = req.body
   if (!Array.isArray(urls) || urls.length === 0) {
     return res.status(400).json({ error: "Invalid input: 'urls' must be a non-empty array." })
+  }
+
+  const checkLightspeed = filters?.lightspeed !== false
+  const checkFortiGuard = filters?.fortiguard !== false
+
+  if (!checkLightspeed && !checkFortiGuard) {
+    return res.status(400).json({ error: "At least one filter must be selected." })
   }
 
   progress.completed = 0
@@ -145,32 +152,64 @@ app.post("/check-links", async (req, res) => {
     console.log(`Processing URL: ${cleanUrl}`)
 
     try {
-      const lightspeedData = await fetchCategorization(cleanUrl)
-
-      const fortiguardData = await checkFortiGuard(cleanUrl)
-
-      domainResults.push({
+      const domainResult = {
         url: cleanUrl,
         lightspeed: {
-          status: lightspeedData.status,
-          category: lightspeedData.categoryName,
+          status: "Not Checked",
+          category: "Not Checked",
         },
         fortiguard: {
-          status: fortiguardData.status,
-          category: fortiguardData.category,
+          status: "Not Checked",
+          category: "Not Checked",
         },
-      })
+      }
+
+      if (checkLightspeed) {
+        console.log(`Checking Lightspeed for: ${cleanUrl}`)
+        try {
+          const lightspeedData = await fetchCategorization(cleanUrl)
+          domainResult.lightspeed = {
+            status: lightspeedData.status,
+            category: lightspeedData.categoryName,
+          }
+        } catch (lightspeedError) {
+          console.error(`Error checking Lightspeed for ${cleanUrl}:`, lightspeedError)
+          domainResult.lightspeed = {
+            status: "Error",
+            category: "Error",
+          }
+        }
+      }
+
+      if (checkFortiGuard) {
+        console.log(`Checking FortiGuard for: ${cleanUrl}`)
+        try {
+          const fortiguardData = await fetchFortiGuard(cleanUrl)
+          domainResult.fortiguard = {
+            status: fortiguardData.status,
+            category: fortiguardData.category,
+          }
+        } catch (fortiguardError) {
+          console.error(`Error checking FortiGuard for ${cleanUrl}:`, fortiguardError)
+          domainResult.fortiguard = {
+            status: "Error",
+            category: "Error",
+          }
+        }
+      }
+
+      domainResults.push(domainResult)
     } catch (error) {
       console.error(`Error processing ${cleanUrl}:`, error)
       domainResults.push({
         url: cleanUrl,
         lightspeed: {
-          status: "Error",
-          category: "Error",
+          status: checkLightspeed ? "Error" : "Not Checked",
+          category: checkLightspeed ? "Error" : "Not Checked",
         },
         fortiguard: {
-          status: "Error",
-          category: "Error",
+          status: checkFortiGuard ? "Error" : "Not Checked",
+          category: checkFortiGuard ? "Error" : "Not Checked",
         },
       })
     } finally {
