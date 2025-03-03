@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap");
+
+:root {
+  --background: #11111b;
+  --background2: #181825;
+  --background3: #1e1e2e;
+  --highlight: #8aadf4;
+  --text-color: #cdd6f4;
+  --loading-color: #f9e2af;
+  --progress-color: #89b4fa;
+  --button-hover: #91d7e3;
+  --shadow: rgba(138, 173, 244, 0.5);
+  --unblocked: #a6e3a1;
+  --blocked: #f38ba8;
+  --tip-accent: #a6e3a1;
+}
+
+body {
+  font-family: "Geist";
+  background-color: var(--background);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+}
+
+.tip {
+  background-color: var(--background3);
+  border-left: 4px solid var(--tip-accent);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: calc(100% - 40px);
+  max-width: 800px;
+  margin-bottom: 20px;
+  border-radius: 0 5px 5px 0;
+}
+
+.tip i {
+  color: var(--tip-accent);
+  font-size: 1.2em;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0px;
+  color: var(--highlight);
+}
+
+h2 {
+  margin: 5px 0px;
+}
+
+h3 {
+  margin: 0px;
+}
+
+p {
+  margin: 0px;
+}
+
+a {
+  color: var(--text-color);
+}
+
+.desc {
+  margin: 30px 0px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+textarea {
+  width: 100%;
+  max-width: 500px;
+  height: 200px;
+  padding: 10px;
+  border: none;
+  border-radius: 20.25px;
+  background-color: var(--background3);
+  color: var(--text-color);
+  font-size: 1em;
+  resize: none;
+  margin-bottom: 10px;
+  outline: none;
+  font-family: "Geist Mono";
+}
+
+button {
+  background-color: var(--highlight);
+  color: var(--text-color);
+  padding: 10px 20px;
+  font-size: 1em;
+  font-family: "Geist";
+  border: none;
+  border-radius: 20.25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: var(--background);
+}
+
+button:hover {
+  background-color: var(--button-hover);
+}
+
+#loading {
+  margin-top: 10px;
+  font-style: italic;
+  color: var(--loading-color);
+}
+
+#progress-container {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--background3);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+  display: none;
+}
+
+#progress-bar {
+  width: 0%;
+  height: 20px;
+  background-color: var(--progress-color);
+  transition: width 0.4s ease;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  max-width: 800px;
+  margin: 50px 0px 20px 0px;
+  gap: 10px;
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+}
+
+.copy-button i {
+  font-size: 1.2em;
+}
+
+#controls button {
+  background: var(--background);
+  color: var(--shadow);
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+#controls button:hover {
+  background: var(--background2);
+}
+
+#outputText {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px;
+  padding: 10px;
+  background-color: var(--background3);
+  border-radius: 5px;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+#loading {
+  display: none;
+}
+
+#result {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+::placeholder {
+  color: var(--shadow);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Geist Mono", monospace;
+  font-size: 0.9em;
+}
+
+th,
+td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--background2);
+}
+
+th {
+  background-color: var(--background2);
+  color: var(--highlight);
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: var(--background2);
+}
+
+.unblocked {
+  color: var(--unblocked);
+  font-weight: 600;
+}
+
+.blocked {
+  color: var(--blocked);
+  font-weight: 600;
+}

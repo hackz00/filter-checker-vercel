@@ -1,0 +1,21 @@
+{
+  "name": "filter-checker",
+  "version": "1.0.0",
+  "description": "An URL checker for Lightspeed and FortiGuard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cheerio": "^1.0.0",
+    "node-fetch": "^2.6.7"
+  },
+  "keywords": [
+    "link checker",
+    "unblocked domains",
+    "filter checker"
+  ],
+  "author": "smxrtfoloo",
+  "license": "LGPL-2.1-only"
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Filter Checker</title>
+</head>
+
+<body>
+  <div class="tip">
+    <i class="bi bi-lightbulb"></i>
+    <span>URLs will be extracted automatically from your text - case doesn't matter!</span>
+  </div>
+  <div class="desc">
+    <h1>Filter Checker</h1>
+    <p>Refer to <a href="https://github.com/smartfoloo/filter-checker/blob/main/README.md">the documentation</a>
+      for a tutorial!</p>
+  </div>
+  <textarea id="inputText" rows="10" placeholder="Paste your FreeDNS text..."></textarea><br>
+  <button onclick="checkLinks()">Check Links</button>
+  <div id="loading">Fetching...</div>
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+  <div id="controls" style="display: none;">
+    <button id="copyLightspeedUnblocked" class="copy-button">
+      <i class="bi bi-copy"></i> Copy Lightspeed Unblocked
+    </button>
+    <button id="copyFortiguardUnblocked" class="copy-button">
+      <i class="bi bi-copy"></i> Copy FortiGuard Unblocked
+    </button>
+  </div>
+  <div id="result"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>
