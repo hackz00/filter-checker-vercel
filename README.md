@@ -29,6 +29,10 @@ You can also put other unwanted text and the app will use only the URLs found in
 
 If you want to use this app to find FreeDNS domains, you can
 
+![screenshot](https://github.com/user-attachments/assets/cc001ee7-f966-499a-905b-4635e17bb5bb)
+
 Copy everything on the page by pressing `Ctrl + A` 
+
+![image](https://github.com/user-attachments/assets/7f6c101b-f616-4769-a33d-a2b4cd286881)
 
 And paste it into the app to find unblocked domains!
