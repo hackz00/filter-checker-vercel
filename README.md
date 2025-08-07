@@ -1,3 +1,5 @@
+PORTED TO VERCEL BY HACKZ00
+
 # Filter Checker
 An URL checker for Lightspeed and FortiGuard
 
